@@ -1,0 +1,102 @@
+.table {
+    min-height: var(--main-height);
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 500px;
+    min-height: 250px;
+    width: 100%;
+    
+    background-color: var(--special) ;
+    border-radius: 20px;
+    color: var(--normal);
+    perspective: 650px;
+    
+    
+}
+
+
+
+.name-fish {
+    /* position: absolute; */
+    transform: translateX(-1px);
+    display:inline-block;
+    height: 4rem;
+    width: fit-content;
+    padding-right: 1vw;
+    border-bottom-right-radius: 20px;
+
+    font-family: 'Bad Script';
+    background: var(--background);  
+}
+
+.info-fish {
+    display: flex;
+    justify-content: center;
+    color: var(--background);
+
+}
+
+.info-fish li {
+    list-style-type: none;
+}
+
+.icon-fish {
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+.icon-fish img {
+
+    width: 4rem;
+    background-color: var(--background) ;
+    border-radius: 50%;
+    transform: translateY(2rem);
+    
+    transition: all .5s;
+}
+
+.icon-fish img:hover {
+    
+    box-shadow: 0 0 1rem var(--normal);
+
+    /* animation: splash infinite ease-in-out 1s ; */
+}
+
+/* @keyframes splash {
+
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    20%, 80% {
+        transform: rotate(15deg);
+    }
+    40%, 60% {
+        transform: rotate(0deg) translateY(-1rem);
+        
+    }
+
+    
+} */
+

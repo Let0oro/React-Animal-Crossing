@@ -1,0 +1,26 @@
+nav {
+    width: 100%;
+    height: var(--header-height);
+    min-height: fit-content;
+    top: 0;
+
+    background: rgb(236,174,30);
+    background: linear-gradient(0deg, var(--background) 0%, var(--normal) 90%);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+nav .logo {
+    height: 20vh;
+}
+nav .logo img {
+    
+    height: 100%;
+}
+
+nav img {
+    height: 70px;
+}

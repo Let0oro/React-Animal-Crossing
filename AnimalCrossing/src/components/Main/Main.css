@@ -1,0 +1,215 @@
+.main {
+    height: var(--main-height);
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+}
+
+
+/* BOCADILLO */
+
+
+.main .dialogue {
+    position: absolute;
+    bottom: 20vh;
+    height: 105px;
+    width: 450px;
+    border-radius: 13% 18% 20% 15% / 64% 71% 89% 94% ;
+
+}
+
+.main .dialogue .back {
+    position: absolute;
+    
+    height: 75px;
+    width: 435px;
+    border-radius: 15% 18% 23% 12% / 100% 100% 78% 62% ;
+    
+    left: 5px;
+    top: 3.3rem;
+    z-index: -1;
+}
+
+.main .dialogue p {
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--text);
+    margin: -.5rem 1.5rem 1rem 1.5rem;
+
+}
+
+
+.main .dialogue .namer {
+    font-family: "Source Sans Pro";
+    position: relative;
+    height: 1.7rem;
+    width: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    transform: rotate(-10deg) translate(1rem, -1rem);
+
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.main .dialogue .animate {
+    
+    height: 10px;
+    position: absolute;
+    transform: translate( 200px , 17px);
+    bottom: 0px;
+    visibility: visible;
+    transition: all 0s ease-in-out;
+    animation: finish-text infinite 1s ease-in-out;
+}
+
+@keyframes finish-text {
+    0%, 100% { transform: translate( 200px , 17px) }
+    50% { transform: translate( 200px , 19px) }
+}
+
+.back-activate {
+    background-color: var(--dialogues);
+}
+
+.namer-activate {
+    background-color: var(--normal);
+}
+
+.main img {
+    height: 60%;
+    margin-top: 2vh;
+    transform: translateX(-4vw);
+    z-index: 1;
+}
+
+
+
+/* BOTONES */
+
+.button--left {
+    border: none;
+    position: absolute;
+    transform: translateY(50px) translateX(-119px);
+    border-radius: 46% 50% 42% 27% / 58% 60% 40% 38%;
+    height: 175px;
+    width: 200px;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: none;
+    transition: box-shadow .7s;
+}
+
+.button--left:hover {
+    box-shadow: inset 0 0 2rem #ecae1e88;
+}
+
+.button--right {
+    border: none;
+    position: absolute;
+    transform: translateY(46px) translateX(134px) rotate(0deg);
+    border-radius: 48% 50% 27% 60% / 60% 60% 39% 38%;
+    height: 175px;
+    width: 203px;
+    background-color: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 100;
+    transition: box-shadow .7s;
+}
+
+.button--right:hover {
+    box-shadow: inset 0 0 2rem #ecae1e88;
+}
+
+
+/* BOTONES - Menú desplegable izquierda */
+
+.desplegable--left {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    transform: translateY(600%);
+    border-radius: 50% ;
+    visibility: hidden;
+    transition: all .8s ease-out, visibility .3s ease-in;
+}
+
+.fish--button, .sea--button, .bugs--button, 
+.fossils--button, .villagers--button, .items--button,
+.music--button, .art--button {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50% ;
+    visibility: visible;
+    transition: visibility .8s;
+    background-color: #fff6;
+    z-index: 100;
+}
+
+.fish--button {
+    content: url(https://acnhapi.com/v1/icons/fish/1);
+    
+    transform: translate(-460%, 70%);
+    transition: all .8s ease-out, visibility .8s .3s;
+}
+
+.sea--button  {
+    content: url(https://acnhapi.com/v1/icons/sea/1);
+    transform: translate(-575%, 120%);
+    transition: all .8s ease-out, visibility .8s .3s;
+}
+.bugs--button  {
+    content: url(https://acnhapi.com/v1/icons/bugs/1);
+    transform: translate(-660%, 210%);
+    transition: all .8s ease-out, visibility .8s .3s;
+}
+.fossils--button  {
+    content: url(https://dodo.ac/np/images/thumb/b/b0/Fossil_NH_Icon.png/120px-Fossil_NH_Icon.png);
+    transform: translate(-715%, 310%);
+    transition: all .8s ease-out, visibility .8s .3s;
+}
+
+/* BOTONES - Menú desplegable derecha */
+
+.desplegable--right {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    transform: translateY(600%);
+    border-radius: 50% ;
+    visibility: hidden;
+    transition: all .8s ease-out, visibility .3s ease-in;
+}
+
+/*! SOLO QUEDA CAMBIAR ESTO */
+.villagers--button {
+    content: url(https://acnhapi.com/v1/icons/villagers/1);
+    transform: translate(440%, 470%);
+    transition: all .8s ease-out, visibility .8s .3s;
+}
+
+.items--button {
+    content: url(https://dodo.ac/np/images/thumb/8/82/Furniture_NH_Inv_Icon.png/120px-Furniture_NH_Inv_Icon.png);
+    transform: translate(555%, 420%);
+    transition: all .8s ease-out, visibility .8s .3s;
+}
+
+.music--button {
+    content: url(https://acnhapi.com/v1/images/songs/1);
+    transform: translate(640%, 330%);
+    transition: all .8s ease-out, visibility .8s .3s;
+}
+
+.art--button {
+    content: url(https://acnhapi.com/v1/images/art/academic_painting);
+    transform: translate(695%, 230%);
+    transition: all .8s ease-out, visibility .8s .3s;
+}
