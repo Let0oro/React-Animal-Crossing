@@ -7,12 +7,67 @@
     gap: 2rem;
 }
 
+.buttons {
+    display: flex;
+    gap: 3rem;
+}
+
+.btn {
+    padding: .7rem;
+    background-color: var(--normal);
+    color: var(--special);
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn:hover {
+    transform: translate( -2px , -2px);
+    box-shadow: 2px 2px var(--special);
+    transition: all .3s;
+}
+
+.btn:active {
+    transform: translate( 0 , 0 );
+    box-shadow: none;
+    transition: all .15s;
+}
+
 .gallery {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-items: center;
     width: 100%;
+}
+
+.zone {
+    text-align: center;
+    padding: .3rem;
+    color: var(--special);
+    border: 2px solid var(--special);
+}
+
+.sortBtn {
+    padding: .5rem;
+    margin: 0 .5rem;
+    background-color: transparent;
+    color: var(--normal);
+    font-weight: bold;
+    border: 2px solid var(--normal) ;
+    border-radius: 15px;
+}
+
+.sortBtn:hover {
+    transform: translate( -2px , -2px);
+    box-shadow: 2px 2px var(--special);
+    transition: all .3s;
+}
+
+.sortBtn:active {
+    transform: translate( 0 , 0 );
+    box-shadow: none;
+    transition: all .15s;
 }
 
 .card {
@@ -24,15 +79,26 @@
     min-height: 250px;
     width: 100%;
     
-    background-color: var(--special) ;
+    background-color: #8a4d4188 ;
     border-radius: 20px;
     color: var(--normal);
     perspective: 650px;
     
-    
+    z-index: 1;
 }
 
+.card:hover {
+    
+    box-shadow: inset 0 0rem 1.5rem var(--normal);
+    background-color: #8a4d4144;
+    cursor:crosshair ;
+    transition: all .4s;
+}
 
+.card:hover .info-fish {
+    color: var(--special);
+    transition: all .4s;
+}
 
 .name-fish {
     /* position: absolute; */
@@ -45,58 +111,107 @@
 
     font-family: 'Bad Script';
     background: var(--background);  
+    z-index: 1000;
+
+    transition: all .4s;
+
+}
+
+.card:hover .name-fish {
+    box-shadow: .4rem .4rem .5rem #8a4d4188;
 }
 
 .info-fish {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     color: var(--background);
+    
+    z-index: 1000;
 
 }
 
 .info-fish li {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    text-align: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
+
     list-style-type: none;
 }
 
-.icon-fish {
-    
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-
+.info-fish li p b {
+    color: var(--normal);
 }
 
-.icon-fish img {
+.calendar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    color: var(--normal);
+    
+    z-index: 1000;
+}
+
+.calendar p {
+    color: var(--background);
+    text-decoration: underline;
+}
+
+.card:hover .calendar p {
+    color: var(--special);
+    transition: all .4s;
+}
+
+.months {
+    padding: .3rem;
+    border-radius: 15px;
+    transition: all .2s;
+}
+
+.icon-fish {
+
+    position: relative;
+    /* calc() */
+    left: calc( 50% - 2rem );
+
+    display: flex;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50% 50% 0% 0%;
+    transform: translateY(0);
+
+    box-shadow: inset 0 0 3rem #8a4d4166 ;
+
+    opacity: 0;
+
+    z-index: 1000;
+
+    transition: all .4s , opacity .4s .1s ;
+}
+
+.icon-fish-img {
+
+    position: absolute;
+    bottom: -2rem;
+    /* calc() */
+    right: calc( 50% - 2rem );
 
     width: 4rem;
-    background-color: var(--background) ;
     border-radius: 50%;
-    transform: translateY(2rem);
-    
-    transition: all .5s;
+    box-shadow: inset 0 0 1rem var(--normal);
+
+    transform: translate( 0 , 0 );
+    translate: 0;
+
+    transition: all .5s, transform 0s linear , translate .2s linear;
+
+    z-index: 100;
 }
-
-.icon-fish img:hover {
-    
-    box-shadow: 0 0 1rem var(--normal);
-
-    /* animation: splash infinite ease-in-out 1s ; */
-}
-
-/* @keyframes splash {
-
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-
-    20%, 80% {
-        transform: rotate(15deg);
-    }
-    40%, 60% {
-        transform: rotate(0deg) translateY(-1rem);
-        
-    }
-
-    
-} */
-
