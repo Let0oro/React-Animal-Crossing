@@ -23,7 +23,7 @@ export const ACContextProvider  = ( {children} ) => {
 
 
     return (
-        <ACContext.Provider value={ { mainURL, MainObject } } >
+        <ACContext.Provider value={ { mainURL, MainObject, setMainObject } } >
             { children }
         </ACContext.Provider>
     );

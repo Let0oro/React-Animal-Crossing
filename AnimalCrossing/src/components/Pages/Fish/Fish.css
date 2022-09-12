@@ -1,15 +1,16 @@
 .table {
     min-height: var(--main-height);
-    width: 80%;
+    width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .buttons {
     display: flex;
-    gap: 3rem;
+    flex-wrap: wrap;
+    gap: 2.5rem;
 }
 
 .btn {
@@ -46,6 +47,54 @@
     padding: .3rem;
     color: var(--special);
     border: 2px solid var(--special);
+}
+
+.search-panel {
+    display: flex;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-panel__input {
+    width: 80%;
+    height: 25px;
+    border-radius: 30px;
+    border: 2px solid var(--normal);
+    background-color: var(--dialogues);
+    color: var(--text);
+    text-align: center;
+    transition: all 50ms ease-in-out;
+}
+
+.search-panel__input:focus {
+    outline: 2px solid var(--normal);
+    font-family: 'Source Sans Pro';
+    font-weight: bold;
+    /* border: 1px solid var(--normal); */
+    border: none;
+}
+
+.search-panel__button {
+    position: relative;
+    padding: .3rem;
+    border-radius: 50%;
+    border: 2px solid var(--normal) ;
+    border-left: .05rem solid transparent;
+    background-color: transparent;
+    overflow: hidden;
+    margin-left: -.3rem;
+    
+    z-index: 1000;
+    
+    transition: all .15s;
+}
+
+.search-panel__button:active {
+    border: 2px solid transparent ;
+    border-left: 2px solid var(--normal);
+    
 }
 
 .sortBtn {
@@ -174,27 +223,6 @@
     padding: .3rem;
     border-radius: 15px;
     transition: all .2s;
-}
-
-.icon-fish {
-
-    position: relative;
-    /* calc() */
-    left: calc( 50% - 2rem );
-
-    display: flex;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50% 50% 0% 0%;
-    transform: translateY(0);
-
-    box-shadow: inset 0 0 3rem #8a4d4166 ;
-
-    opacity: 0;
-
-    z-index: 1000;
-
-    transition: all .4s , opacity .4s .1s ;
 }
 
 .icon-fish-img {
