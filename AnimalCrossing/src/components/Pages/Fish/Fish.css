@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem;
+    gap: 2rem;
 }
 
 
@@ -61,6 +61,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -106,6 +107,7 @@
     flex-direction: column;
     align-items: center;
     justify-items: center;
+    gap: 2.5rem;
     width: 100%;
 }
 
@@ -145,24 +147,35 @@
     color: var(--normal);
     perspective: 650px;
     
-    z-index: 1;
+    z-index: 100;
 
     transition: all .5s;
 }
 
 .exp_card {
-    background-color: transparent;
+    background-color: var(--background);
+    color: var(--normal);
+    font-size: 1.5rem;
+    font-weight: bolder;
+    font-family: 'Source Sans Pro';
     border: none;
-    height: 5rem;
-    width: 5rem;
+    height: 4rem;
+    width: 4rem;
     border-radius: 50%;
     position: absolute;
+    box-shadow: inset 0 0 1rem var(--normal), 0 0 0 .5rem var(--background);
     /* calc */
-    top: calc(100% - 2.5rem);
-    left: calc(50% - 2.5rem);
+    top: calc(100% - 2rem);
+    left: calc(50% - 2rem);
     z-index: 50;
-
+    
     transition: all .5s;
+}
+
+.exp_card:hover {
+    color: var(--special);
+    background-color: var(--normal);
+    box-shadow: inset 0 0 1.5rem var(--background), 0 0 0 .5rem var(--background);
 }
 
 .card:hover {
@@ -205,7 +218,7 @@
     align-items: center;
     color: var(--background);
     
-    z-index: 1000;
+    z-index: 1;
 
 }
 

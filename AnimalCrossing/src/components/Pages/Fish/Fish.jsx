@@ -8,35 +8,32 @@ const Fish = ( ) => {
   const { MainObject } = useContext(ACContext);
 
   const searchPanel  = document.querySelector('.search-panel__input'); 
-  const iconFishImg  = document.querySelectorAll('.icon-fish-img');
-  const fishCard     = document.querySelectorAll('.card');
   const fishInfoExp  = document.querySelectorAll('.info-expanded');
   const months       = document.querySelectorAll('.months'); 
-  // const nameFish     = document.querySelectorAll('.name-fish'); 
-  // const rarityFish   = document.querySelectorAll('.rarity-fish'); 
-  // const locationFish = document.querySelectorAll('.location-fish'); 
   const priceFish    = document.querySelectorAll('.price-fish'); 
   const priceCjFish  = document.querySelectorAll('.price-cj-fish'); 
   const shadowFish   = document.querySelectorAll('.shadow-fish'); 
   
-  const followFish = ( event, i ) => {
-    const fishImage = iconFishImg[ i - 1 ];
-    const card      = fishCard[ i - 1 ];
+  const followFish = ( event ) => {
+    const card      = event.composedPath()[ event.composedPath().length - 9 ];
+    const fishImage = card.lastChild;
 
     fishImage.style.left = 0;
     fishImage.style.top = 0;
     fishImage.style.boxShadow = 'none';
-
+    
     let mouseX = event.clientX,        
         mouseY = event.clientY,
         iconX  = fishImage.getBoundingClientRect().left + 16, // +2rem 
         iconY  = fishImage.getBoundingClientRect().top  + 16, // +2rem
-        baseX  = mouseX - iconX,
-        laterY = mouseY - iconY,
         cardX  = card.getBoundingClientRect().left,
         cardY  = card.getBoundingClientRect().top,
+
         movX   = mouseX - cardX,
         movY   = mouseY - cardY,
+        baseX  = mouseX - iconX,
+        laterY = mouseY - iconY,
+
         angle  = Math.atan(laterY / baseX);
 
     if (mouseX >= iconX ) {
@@ -49,9 +46,9 @@ const Fish = ( ) => {
     fishImage.style.backgroundColor = 'transparent';    
   };
   
-  const backFish = ( event, i ) => {
-    const fishImage = iconFishImg[ i - 1 ];
-    const card      = fishCard[ i - 1 ];
+  const backFish = ( event ) => {
+    const card      = event.composedPath()[ event.composedPath().length - 9 ];
+    const fishImage = card.lastChild;
 
     let cardW  = card.getBoundingClientRect().width,
         cardH  = card.getBoundingClientRect().height;
@@ -62,10 +59,10 @@ const Fish = ( ) => {
     fishImage.style.backgroundColor = 'var(--background)';
   };
 
-  const expandCard = (event, i) => {
-    const fishImage = iconFishImg[ i - 1 ];
-    const card      = fishCard[ i - 1 ];
-    const infoExp   = fishInfoExp[ i - 1 ];
+  const expandCard = ( event ) => {
+    const card      = event.composedPath()[ event.composedPath().length - 9 ];
+    const infoExp   = card.childNodes[3];
+    const fishImage = card.lastChild;
 
     let cardW  = card.getBoundingClientRect().width;
     if (isExpand) {
@@ -134,37 +131,15 @@ const Fish = ( ) => {
   }, 800);
   }, [sortPrice]);
 
-//   useEffect(() => {
-//     rarityFish.forEach(v => v.style.backgroundColor = '#7e775e' );
-//     setTimeout(() => rarityFish.forEach(v => v.style.backgroundColor = 'transparent' )
-//     , 800);
-// }, [filterRarity]);
-
-//   useEffect(() => {
-//     locationFish.forEach(v => v.style.backgroundColor = '#7e775e' );
-//     setTimeout(() => locationFish.forEach(v => v.style.backgroundColor = 'transparent' )
-//     , 800);
-// }, [filterLocation]);
-
   useEffect(() => {
     shadowFish.forEach(v => v.style.backgroundColor = '#7e775e' );
     setTimeout(() => shadowFish.forEach(v => v.style.backgroundColor = 'transparent' )
     , 800);
   }, [sortShadow]);
 
-  const rarityState = [
-    'All',
-    'Common',
-    'Uncommon',
-    'Rare',
-    'Ultra-rare' ];
+  const rarityState = [ 'All', 'Common', 'Uncommon', 'Rare', 'Ultra-rare' ];
 
-  const locationState = [
-    'All',
-    'Pond',
-    'River',
-    'Pier',
-    'Sea' ];
+  const locationState = [ 'All', 'Pond', 'River', 'Pier', 'Sea' ];
 
 
   return (
@@ -211,88 +186,84 @@ const Fish = ( ) => {
 
       </div>
 
-      { (MainObject.length > 0) ?
+      <div className="gallery" >
 
-        ( isSearch || !isSearch) && MainObject
+        { (MainObject.length > 0) ?
 
-        .filter( searchFilter )
+          ( isSearch || !isSearch) && MainObject
 
-        .filter( locationFilter[filterLocation] )
-        .filter( rarityFilter[filterRarity] )
-        
-        .sort( priceSorter[ sortPrice ] )
-        .sort( shadowSorter[ sortShadow ] )
+          .filter( searchFilter )
 
-        .map( (  fish  ) => (
+          .filter( locationFilter[filterLocation] )
+          .filter( rarityFilter[filterRarity] )
+          
+          .sort( priceSorter[ sortPrice ] )
+          .sort( shadowSorter[ sortShadow ] )
 
-        <div className="gallery" key={fish.id}>
-          <button className='exp_card' 
-          onClick={ () => expandCard(event, fish.id) || setIsExpand( isExpand ? false : true ) }></button>
-          <figure className='card'  
-          onMouseMove={ () => followFish( event, fish.id ) }
-          onMouseLeave={ () => backFish( event, fish.id ) }
-          >
-            <h1 className='name-fish' >{ fish.name['name-USen'] }</h1>
-            
-            <ul className='info-fish' >
-              <li>
-                <p>Price - <b className='price-fish' >{ fish.price } bayas</b></p>
-                <p>Price(CJ) - <b className='price-cj-fish' >{ fish['price-cj'] } bayas</b></p>
-              </li>
-              <li>
-                {/* <p>Rarity - <b className='rarity-fish' >{ fish.availability.rarity }</b></p> */}
-                <p>Rarity - <b >{ fish.availability.rarity }</b></p>
-                <p>Time - <b>{ fish.availability.isAllDay? 'All day' : fish.availability.time }</b></p>
-              </li>
-              <li>
-                {/* <p>Location - <b className='location-fish' >{ fish.availability.location }</b></p> */}
-                <p>Location - <b >{ fish.availability.location }</b></p>
-                <p>Shadow size - <b className='shadow-fish' >{ fish.shadow }</b></p>
-              </li>
-            </ul>
-              <div className="info-expanded">
-                <p>Catch phrase - <b>{ fish['catch-phrase'] }</b></p>
-                <p>Museum description - <b>{ fish['museum-phrase'] }</b></p>
-              </div>
-                
-            <div className='calendar' > 
-              <p>Disponibility:</p>
-              <ul className='months' >
-                { fish.availability.isAllYear  ? 'All Year' : ( zonaNorte 
-                ? fish.availability['month-array-northern'] : fish.availability['month-array-southern'])
-                .map( (v , i , a) => {
-                  // let arrMonths = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'  ];
-                  
-                  (i === (a.length - 1 ) || i === 0 ? (
-                    v === 1 &&  (v = 'Jan') || 
-                    v === 2 &&  (v = 'Feb') || 
-                    v === 3 &&  (v = 'Mar') ||
-                    v === 4 &&  (v = 'Apr') ||
-                    v === 5 &&  (v = 'May') ||
-                    v === 6 &&  (v = 'Jun') ||
-                    v === 7 &&  (v = 'Jul') ||
-                    v === 8 &&  (v = 'Aug') ||
-                    v === 9 &&  (v = 'Sep') ||
-                    v === 10 && (v = 'Oct') ||
-                    v === 11 && (v = 'Nov') ||
-                    v === 12 && (v = 'Dec')
-                    ) : v = ''
-                  ); 
-                  return v;
+          .map( (  fish  ) => (
 
-                  } ).join( ' ' ).replace(/\s+/g, ' - ') }
+            <figure className='card' key={fish.id}
+            onMouseMove={ () => followFish( event, fish.id ) }
+            onMouseLeave={ () => backFish( event, fish.id ) }
+            >
+            <button className='exp_card' 
+            onClick={ () => expandCard(event, fish.id) || setIsExpand( isExpand ? false : true ) }>?</button>
+              <h1 className='name-fish' >{ fish.name['name-USen'] }</h1>
+              
+              <ul className='info-fish'>
+                <li>
+                  <p>Price - <b className='price-fish' >{ fish.price } bayas</b></p>
+                  <p>Price(CJ) - <b className='price-cj-fish' >{ fish['price-cj'] } bayas</b></p>
+                </li>
+                <li>
+                  {/* <p>Rarity - <b className='rarity-fish' >{ fish.availability.rarity }</b></p> */}
+                  <p>Rarity - <b >{ fish.availability.rarity }</b></p>
+                  <p>Time - <b>{ fish.availability.isAllDay? 'All day' : fish.availability.time }</b></p>
+                </li>
+                <li>
+                  {/* <p>Location - <b className='location-fish' >{ fish.availability.location }</b></p> */}
+                  <p>Location - <b >{ fish.availability.location }</b></p>
+                  <p>Shadow size - <b className='shadow-fish' >{ fish.shadow }</b></p>
+                </li>
               </ul>
-            </div>
+                <div className="info-expanded">
+                  <p>Catch phrase - <b>{ fish['catch-phrase'] }</b></p>
+                  <p>Museum description - <b>{ fish['museum-phrase'] }</b></p>
+                </div>
+                  
+              <div className='calendar' > 
+                <p>Disponibility:</p>
+                <ul className='months' >
+                  { fish.availability.isAllYear  ? 'All Year' : ( zonaNorte 
+                  ? fish.availability['month-array-northern'] : fish.availability['month-array-southern'])
+                  .map( (v , i , a) => {
+                    // let arrMonths = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'  ];
+                    
+                    (i === (a.length - 1 ) || i === 0 ? (
+                      v === 1 &&  (v = 'Jan') || v === 2 &&  (v = 'Feb') || 
+                      v === 3 &&  (v = 'Mar') || v === 4 &&  (v = 'Apr') ||
+                      v === 5 &&  (v = 'May') || v === 6 &&  (v = 'Jun') ||
+                      v === 7 &&  (v = 'Jul') || v === 8 &&  (v = 'Aug') ||
+                      v === 9 &&  (v = 'Sep') || v === 10 && (v = 'Oct') ||
+                      v === 11 && (v = 'Nov') || v === 12 && (v = 'Dec')
+                      ) : v = ''
+                    ); 
+                    return v;
 
-            <img className='icon-fish-img' src={ fish.icon_uri } alt={`icon of ${ fish.name['name-USen']}`} />
-          </figure>
-        </div>
+                    } ).join( ' ' ).replace(/\s+/g, ' - ') }
+                </ul>
+              </div>
+
+              <img className='icon-fish-img' src={ fish.icon_uri } alt={`icon of ${ fish.name['name-USen']}`} />
+            </figure>
 
 
-      ))
-      : (
-        <h2 className='charge' >Cargando...</h2> 
-      )}
+        ))
+        : (
+          <h2 className='charge' >Cargando...</h2> 
+        )}
+      </div>
+
     </div>
 
   )
