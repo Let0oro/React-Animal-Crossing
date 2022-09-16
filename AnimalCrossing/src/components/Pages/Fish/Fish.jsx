@@ -7,34 +7,40 @@ const Fish = ( ) => {
   
   const { MainObject } = useContext(ACContext);
 
+  //? VARIABLES
+
+  //* HTML - DOM
   const searchPanel  = document.querySelector('.search-panel__input'); 
-  const fishInfoExp  = document.querySelectorAll('.info-expanded');
   const months       = document.querySelectorAll('.months'); 
   const priceFish    = document.querySelectorAll('.price-fish'); 
   const priceCjFish  = document.querySelectorAll('.price-cj-fish'); 
   const shadowFish   = document.querySelectorAll('.shadow-fish'); 
+
+  //* FUNCIONALES 
+  const rarityState = [ 'All', 'Common', 'Uncommon', 'Rare', 'Ultra-rare' ];
+  const locationState = [ 'All', 'Pond', 'River', 'Pier', 'Sea' ];
   
+  //? FUNCIONES * CARTA
+
   const followFish = ( event ) => {
     const card      = event.composedPath()[ event.composedPath().length - 9 ];
     const fishImage = card.lastChild;
-
-    fishImage.style.left = 0;
-    fishImage.style.top = 0;
-    fishImage.style.boxShadow = 'none';
     
-    let mouseX = event.clientX,        
+    let mouseX = event.clientX,
         mouseY = event.clientY,
         iconX  = fishImage.getBoundingClientRect().left + 16, // +2rem 
         iconY  = fishImage.getBoundingClientRect().top  + 16, // +2rem
         cardX  = card.getBoundingClientRect().left,
         cardY  = card.getBoundingClientRect().top,
-
         movX   = mouseX - cardX,
         movY   = mouseY - cardY,
         baseX  = mouseX - iconX,
         laterY = mouseY - iconY,
-
         angle  = Math.atan(laterY / baseX);
+
+        fishImage.style.left = 0;
+        fishImage.style.top = 0;
+        fishImage.style.boxShadow = 'none';
 
     if (mouseX >= iconX ) {
       fishImage.style.transform = `rotate( ${ angle }rad ) rotateY( 180deg )`;
@@ -50,8 +56,8 @@ const Fish = ( ) => {
     const card      = event.composedPath()[ event.composedPath().length - 9 ];
     const fishImage = card.lastChild;
 
-    let cardW  = card.getBoundingClientRect().width,
-        cardH  = card.getBoundingClientRect().height;
+    const cardW  = card.getBoundingClientRect().width,
+          cardH  = card.getBoundingClientRect().height;
 
     fishImage.style.boxShadow  = 'inset 0 0 1rem var(--normal), 0 0 0 .5rem var(--background)';
     fishImage.style.translate  = ` ${cardW/2 - 32}px  ${cardH - 32}px `;
@@ -64,8 +70,10 @@ const Fish = ( ) => {
     const infoExp   = card.childNodes[3];
     const fishImage = card.lastChild;
 
-    let cardW  = card.getBoundingClientRect().width;
-    if (isExpand) {
+    const cardW  = card.getBoundingClientRect().width;
+    const cardH  = card.getBoundingClientRect().height;
+
+    if (cardH === 400) {
       card.style.height         = '250px';
       fishImage.style.translate = `${cardW/2 - 32}px 218px`;
       infoExp.style.visibility  = 'hidden';
@@ -77,6 +85,8 @@ const Fish = ( ) => {
       infoExp.style.position    = 'relative';
     }
   };
+
+  //? FUNCIONES * FILTROS
 
   const searchFilter = f => f.name['name-USen'].includes(searchPanel.value.toLowerCase());
 
@@ -108,6 +118,8 @@ const Fish = ( ) => {
     (a,b) => +b.shadow.match( /[0-9]+/g ) - +a.shadow.match( /[0-9]+/g ),
   ];
 
+  //? USE STATE 
+
   const [ zonaNorte      , setZonaNorte ]       = useState(true);
   const [ sortPrice      , setSortPrice ]       = useState(0);
   const [ filterRarity   , setFilterRarity ]    = useState(0);
@@ -115,6 +127,8 @@ const Fish = ( ) => {
   const [ sortShadow     , setSortShadow ]      = useState(0);
   const [ isSearch       , setIsSearch ]        = useState(false);
   const [ isExpand       , setIsExpand ]        = useState(false);
+
+  //? USE EFFECT - SUBRAYADO 
 
   useEffect(() => {
     months.forEach(v => v.style.backgroundColor = '#7e775e' );
@@ -137,10 +151,6 @@ const Fish = ( ) => {
     , 800);
   }, [sortShadow]);
 
-  const rarityState = [ 'All', 'Common', 'Uncommon', 'Rare', 'Ultra-rare' ];
-
-  const locationState = [ 'All', 'Pond', 'River', 'Pier', 'Sea' ];
-
 
   return (
 
@@ -150,6 +160,8 @@ const Fish = ( ) => {
       <input className="search-panel__input" type="text" onKeyUp={ () => setIsSearch( isSearch ? false : true ) }/> 
       <button className="search-panel__button" onClick={ () => setIsSearch( isSearch ? false : true ) } >🔍</button>
     </div>
+
+    {/*//? BOTONES HTML */}
 
     <div className="all-buttons">
 
@@ -186,6 +198,8 @@ const Fish = ( ) => {
 
       </div>
 
+      {/*//? CARTAS HTML */}
+
       <div className="gallery" >
 
         { (MainObject.length > 0) ?
@@ -202,12 +216,12 @@ const Fish = ( ) => {
 
           .map( (  fish  ) => (
 
-            <figure className='card' key={fish.id}
+            <figure className='card' key={ fish.id }
             onMouseMove={ () => followFish( event, fish.id ) }
             onMouseLeave={ () => backFish( event, fish.id ) }
             >
             <button className='exp_card' 
-            onClick={ () => expandCard(event, fish.id) || setIsExpand( isExpand ? false : true ) }>?</button>
+            onClick={ () => expandCard( event ) }>?</button>
               <h1 className='name-fish' >{ fish.name['name-USen'] }</h1>
               
               <ul className='info-fish'>
