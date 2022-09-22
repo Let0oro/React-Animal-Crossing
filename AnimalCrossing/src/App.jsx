@@ -32,15 +32,15 @@ const App = () => {
 
                 <Route path='/' element={ <Main  /> } />
 
-                <Route path='/Art' element={ <Art  /> } />
-                <Route path='/Bugs' element={ <Bugs  /> } />
-                <Route path='/Fish' element={ <Fish  /> } />
-                <Route path='/Fossils' element={ <Fossils  /> } />
-                <Route path='/Items' element={ <Items  /> } />
-                <Route path='/Music' element={ <Music  /> } />
-                <Route path='/Sea' element={ <Sea  /> } />
-                <Route path='/Songs' element={ <Songs  /> } />
-                <Route path='/Villagers' element={ <Villagers  /> } />
+                <Route path='/art' element={ <Art  /> } />
+                <Route path='/bugs' element={ <Bugs  /> } />
+                <Route path='/fish' element={ <Fish  /> } />
+                <Route path='/fossils' element={ <Fossils  /> } />
+                <Route path='/items' element={ <Items  /> } />
+                <Route path='/music' element={ <Music  /> } />
+                <Route path='/sea' element={ <Sea  /> } />
+                <Route path='/songs' element={ <Songs  /> } />
+                <Route path='/villagers' element={ <Villagers  /> } />
 
               </Routes>
 

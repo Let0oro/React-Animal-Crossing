@@ -14,7 +14,7 @@ let isUsedRight = false;
 const Main = () => {
 
   //* UseContext
-  const { setMainUrl, mainURL } = useContext( ACContext );
+  const { setMainURL, mainURL, petition } = useContext( ACContext );
   //* Fin UseContext
 
 
@@ -69,7 +69,7 @@ const Main = () => {
       // NOOO, pero vigila!!! Lo pongo en falso porque el tiempo que tarda en hacerse la función es menor que el que tarda en cambiar el valor
 
     if (isUsedLeft) {
-      setDialogue( 'Pínchame de nuevo para cerrar el menú' );
+      setDialogue( 'Click me again to close the menu' );
       visiblizer();
       setIsTendo( 'Tendo' );
     
@@ -79,7 +79,7 @@ const Main = () => {
   const rightIsUsed = () => {
 
     if (isUsedRight) {
-      setDialogue( 'Pínchame de nuevo para cerrar el menú' );
+      setDialogue( 'Click me again to close the menu' );
       visiblizer();
       setIsTendo( 'Nendo' );
     
@@ -104,7 +104,7 @@ const Main = () => {
 
         visiblizer();
 
-        text.split(' ').includes( 'consumibles' )
+        text.split(' ').includes( 'consumables' )
           ? setIsTendo( 'Tendo' )
           : setIsTendo( 'Nendo' )
         ;
@@ -210,7 +210,7 @@ const Main = () => {
       className='button--left' 
       onClick={ deployButtonsLeft }
       onMouseMove={ leftIsUsed }
-      onMouseOver={ () =>  write( 'Pínchame si necesitas más info sobre consumibles', true ) } 
+      onMouseOver={ () =>  write( 'Click me if you need more info about consumables', true ) } 
       onMouseOut={ () => write( '', false ) } 
       ></button>
 
@@ -218,7 +218,7 @@ const Main = () => {
       <Link to='/Fish'
       ref={ fishButton }
       className='desplegable--left'
-      onClick={ () => setMainUrl( 'https://acnhapi.com/v1a/fish' )} 
+      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/fish' ) } 
 
       />
 
@@ -226,7 +226,7 @@ const Main = () => {
       <Link to='/Sea'
       ref={ seaButton }
       className='desplegable--left'
-      onClick={ () => setMainUrl( 'https://acnhapi.com/v1a/sea' )} 
+      onClick={() => setMainURL( 'https://acnhapi.com/v1a/sea' )} 
 
       />
 
@@ -234,7 +234,7 @@ const Main = () => {
       <Link to='/Bugs'
       ref={ bugsButton }
       className='desplegable--left'
-      onClick={ () => setMainUrl( 'https://acnhapi.com/v1a/bugs' )} 
+      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/bugs' )} 
 
       />
 
@@ -242,7 +242,7 @@ const Main = () => {
       <Link to='/Fossils'
       ref={ fossilsButton }
       className='desplegable--left'
-      onClick={ () => setMainUrl( 'https://acnhapi.com/v1a/fossils' )} 
+      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/fossils' )} 
 
       />
 
@@ -254,14 +254,14 @@ const Main = () => {
       className='button--right' 
       onClick={ deployButtonsRight } 
       onMouseMove={ rightIsUsed }
-      onMouseOver={ () =>  write( 'Pínchame si necesitas más info sobre seres vivos', true ) } 
+      onMouseOver={ () =>  write( 'Click me if you need more info about living beings.', true ) } 
       onMouseOut={ () => write( '', false ) } 
       />
 
       <Link to='/Villagers'
       ref={ villagersButton }
       className='desplegable--right'
-      onClick={ () => setMainUrl( 'https://acnhapi.com/v1a/villagers' )} 
+      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/villagers' )} 
 
       />
 
@@ -269,7 +269,7 @@ const Main = () => {
       <Link to='/Items'
       ref={ itemsButton }
       className='desplegable--right'
-      onClick={ () => setMainUrl( 'https://acnhapi.com/v1a/items' )} 
+      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/items' )} 
 
       />
 
@@ -277,7 +277,7 @@ const Main = () => {
       <Link to='/Music'
       ref={ musicButton }
       className='desplegable--right'
-      onClick={ () => setMainUrl( 'https://acnhapi.com/v1a/music' )} 
+      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/music' )} 
 
       />
 
@@ -285,7 +285,7 @@ const Main = () => {
       <Link to='/Art'
       ref={ artButton }
       className='desplegable--right'
-      onClick={ () => setMainUrl( 'https://acnhapi.com/v1a/art' )} 
+      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/art' )} 
 
       />
 

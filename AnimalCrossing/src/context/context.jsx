@@ -5,7 +5,7 @@ export const ACContext = createContext();
 export const ACContextProvider  = ( {children} ) => {
 
     
-  const [ mainURL, setMainURL ]       = useState ( 'https://acnhapi.com/v1a/fish' );
+  const [ mainURL, setMainURL ]       = useState ('https://acnhapi.com/v1a/fish');
   const [ MainObject, setMainObject ] = useState( [] );
 
   const peticion = async( URL ) => {
@@ -17,13 +17,14 @@ export const ACContextProvider  = ( {children} ) => {
 
   
   useEffect(() => {
+    console.log({mainURL});
     peticion( mainURL );
   
-  }, []);
+  }, [mainURL]);
 
 
     return (
-        <ACContext.Provider value={ { mainURL, MainObject, setMainObject } } >
+        <ACContext.Provider value={ { mainURL, setMainURL, MainObject, setMainObject } } >
             { children }
         </ACContext.Provider>
     );

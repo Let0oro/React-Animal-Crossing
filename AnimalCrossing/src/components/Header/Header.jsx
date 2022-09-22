@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <nav>
 
-      <Link to='/' className="logo" onClick={() => setMainURL( 'https://acnhapi.com/v1a/fish' )} >
+      <Link to='/' className="logo"  >
         <img src="https://img.icons8.com/clouds/500/animal-crossing.png" />
       </Link>  
     

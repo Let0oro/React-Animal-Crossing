@@ -5,7 +5,9 @@ import { useContext , useState , useEffect } from 'react';
 
 const Fish = ( ) => {
   
-  const { MainObject } = useContext(ACContext);
+  const { MainObject, mainURL } = useContext(ACContext);
+
+  console.log(MainObject, mainURL);
 
   //? VARIABLES
 
@@ -88,7 +90,7 @@ const Fish = ( ) => {
 
   //? FUNCIONES * FILTROS
 
-  const searchFilter = f => f.name['name-USen'].includes(searchPanel.value.toLowerCase());
+  const searchFilter = f => f.name['name-USen'].includes( searchPanel === null ? '' : searchPanel.value.toLowerCase() );
 
   const rarityFilter  = [
     f => f,
@@ -126,7 +128,6 @@ const Fish = ( ) => {
   const [ filterLocation , setFilterLocation ]  = useState(0);
   const [ sortShadow     , setSortShadow ]      = useState(0);
   const [ isSearch       , setIsSearch ]        = useState(false);
-  const [ isExpand       , setIsExpand ]        = useState(false);
 
   //? USE EFFECT - SUBRAYADO 
 

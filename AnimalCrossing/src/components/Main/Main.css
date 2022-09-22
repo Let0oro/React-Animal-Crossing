@@ -95,10 +95,11 @@
 .button--left {
     border: none;
     position: absolute;
-    transform: translateY(50px) translateX(-119px);
+    top: 23vh;
+    right: 52.6%;
     border-radius: 46% 50% 42% 27% / 58% 60% 40% 38%;
-    height: 175px;
-    width: 200px;
+    height: 160px;
+    width: 180px;
     background-color: transparent;
     cursor: pointer;
     z-index: 100;
@@ -113,10 +114,11 @@
 .button--right {
     border: none;
     position: absolute;
-    transform: translateY(46px) translateX(134px) rotate(0deg);
+    top: 23vh;
+    left: 50.7%;
     border-radius: 48% 50% 27% 60% / 60% 60% 39% 38%;
-    height: 175px;
-    width: 203px;
+    height: 160px;
+    width: 183px;
     background-color: transparent;
     box-shadow: none;
     cursor: pointer;
@@ -135,7 +137,7 @@
     position: absolute;
     height: 50px;
     width: 50px;
-    transform: translateY(600%);
+    translate: 0 600%;
     border-radius: 50% ;
     visibility: hidden;
     transition: all .8s ease-out, visibility .3s ease-in;
@@ -152,28 +154,30 @@
     transition: visibility .8s;
     background-color: #fff6;
     z-index: 100;
+
+    transition: background-color .2s;
 }
 
 .fish--button {
     content: url(https://acnhapi.com/v1/icons/fish/1);
     
-    transform: translate(-460%, 70%);
+    translate: -460% 70%;
     transition: all .8s ease-out, visibility .8s .3s;
 }
 
 .sea--button  {
     content: url(https://acnhapi.com/v1/icons/sea/1);
-    transform: translate(-575%, 120%);
+    translate: -575% 120%;
     transition: all .8s ease-out, visibility .8s .3s;
 }
 .bugs--button  {
     content: url(https://acnhapi.com/v1/icons/bugs/1);
-    transform: translate(-660%, 210%);
+    translate: -660% 210%;
     transition: all .8s ease-out, visibility .8s .3s;
 }
 .fossils--button  {
     content: url(https://dodo.ac/np/images/thumb/b/b0/Fossil_NH_Icon.png/120px-Fossil_NH_Icon.png);
-    transform: translate(-715%, 310%);
+    translate: -715% 310%;
     transition: all .8s ease-out, visibility .8s .3s;
 }
 
@@ -183,7 +187,7 @@
     position: absolute;
     height: 50px;
     width: 50px;
-    transform: translateY(600%);
+    translate: 0 600%;
     border-radius: 50% ;
     visibility: hidden;
     transition: all .8s ease-out, visibility .3s ease-in;
@@ -192,24 +196,30 @@
 /*! SOLO QUEDA CAMBIAR ESTO */
 .villagers--button {
     content: url(https://acnhapi.com/v1/icons/villagers/1);
-    transform: translate(440%, 470%);
+    translate: 440% 470%;
     transition: all .8s ease-out, visibility .8s .3s;
 }
 
 .items--button {
     content: url(https://dodo.ac/np/images/thumb/8/82/Furniture_NH_Inv_Icon.png/120px-Furniture_NH_Inv_Icon.png);
-    transform: translate(555%, 420%);
+    translate: 555% 420%;
     transition: all .8s ease-out, visibility .8s .3s;
 }
 
 .music--button {
     content: url(https://acnhapi.com/v1/images/songs/1);
-    transform: translate(640%, 330%);
+    translate: 640% 330%;
     transition: all .8s ease-out, visibility .8s .3s;
 }
 
 .art--button {
     content: url(https://acnhapi.com/v1/images/art/academic_painting);
-    transform: translate(695%, 230%);
+    translate: 695% 230%;
     transition: all .8s ease-out, visibility .8s .3s;
+}
+
+:is(.fish--button, .sea--button, .bugs--button, 
+.fossils--button, .villagers--button, .items--button,
+.music--button, .art--button):hover {
+    background-color: var(--normal);
 }
