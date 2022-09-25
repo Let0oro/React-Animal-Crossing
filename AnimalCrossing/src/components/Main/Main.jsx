@@ -42,7 +42,7 @@ const Main = () => {
     // Right 
   const villagersButton = useRef(null);
   const itemsButton     = useRef(null);
-  const musicButton     = useRef(null);
+  const songsButton     = useRef(null);
   const artButton       = useRef(null);
 
   //* Fin UseRef
@@ -181,7 +181,7 @@ const Main = () => {
 
       villagersButton.current.className  = 'desplegable--right';
       itemsButton.current.className      = 'desplegable--right';
-      musicButton.current.className      = 'desplegable--right';
+      songsButton.current.className      = 'desplegable--right';
       artButton.current.className        = 'desplegable--right';
 
     } else {
@@ -193,7 +193,7 @@ const Main = () => {
       
       villagersButton.current.className  = 'villagers--button' ;
       itemsButton.current.className      = 'items--button'     ;
-      musicButton.current.className      = 'music--button'     ;
+      songsButton.current.className      = 'songs--button'     ;
       artButton.current.className        = 'art--button'       ;
     };
 
@@ -274,10 +274,10 @@ const Main = () => {
       />
 
 
-      <Link to='/Music'
-      ref={ musicButton }
+      <Link to='/Songs'
+      ref={ songsButton }
       className='desplegable--right'
-      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/music' )} 
+      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/songs' )} 
 
       />
 

@@ -3,7 +3,7 @@
 .info-fossil li {
     display: flex;
     height: 100%;
-    margin-top: 1rem;
+    margin: 0 2rem 3rem 2rem;
     flex-direction: column;
 
     text-align: center;

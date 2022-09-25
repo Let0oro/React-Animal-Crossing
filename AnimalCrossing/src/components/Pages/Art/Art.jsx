@@ -84,13 +84,13 @@ const searchPanel  = document.querySelector('.search-panel__input');
                   <p>Buy price - <b className='price-cj-fish' >{ obj['sell-price'] } bayas</b></p>
                 </li>
                 <li>
-                  {/* <p>Location - <b className='location-fish' >{ fish.availability.location }</b></p> */}
                   <p>Has fake - <b >{ obj.hasFake.toString() }</b></p>
                 </li>
 
               </ul>
-
+              
                   <p>Museum description - <b>{ obj['museum-desc'] }</b></p>
+
                   
               <img className='icon-fish-img' src={ obj.image_uri } alt={`icon of ${ obj.name['name-USen']}`} />
             

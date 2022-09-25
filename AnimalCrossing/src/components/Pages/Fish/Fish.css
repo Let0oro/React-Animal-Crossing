@@ -301,6 +301,26 @@
     translate: 0;
 
     transition: all .5s, transform 0s linear , translate .2s linear;
+    animation: attention 2s infinite ease-in-out;
 
     z-index: 100;
+}
+
+@keyframes attention {
+    0%, 100% {
+        scale: 100%;
+    }
+    15%{
+        scale: 95%;
+    }
+    30%{
+        scale: 100%;
+    }
+    45%{
+        scale: 95%;
+    }
+}
+
+.card > p {
+    margin: 1rem 2rem 3rem 2rem;
 }
