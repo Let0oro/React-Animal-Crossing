@@ -1,0 +1,42 @@
+
+.items-page {
+
+    display: flex;
+    gap: 3rem;
+
+}
+
+.houseware, .misc, .wallmounted { 
+
+    all: unset;
+
+    padding: .5rem;
+    margin: 0 .5rem;
+    background-color: transparent;
+    color: var(--normal);
+    font-weight: bold;
+    border: 2px solid var(--normal) ;
+    border-radius: 15px;
+
+    cursor: pointer;
+
+}
+
+
+
+.houseware {
+
+
+}
+
+.misc {
+
+
+
+}
+
+.wallmounted {
+
+
+
+}

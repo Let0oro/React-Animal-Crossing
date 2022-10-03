@@ -5,7 +5,6 @@ export const ACContext = createContext();
 export const ACContextProvider  = ( {children} ) => {
 
     
-  const [ mainURL, setMainURL ]       = useState ('https://acnhapi.com/');
   const [ MainObject, setMainObject ] = useState( [] );
 
   const peticion = async( URL ) => {
@@ -16,17 +15,9 @@ export const ACContextProvider  = ( {children} ) => {
       setMainObject( data );
   };
 
-  
-  useEffect(() => {
-    console.log({mainURL});
-    
-    peticion( mainURL );
-  
-  }, [mainURL]);
-
 
     return (
-        <ACContext.Provider value={ { mainURL, setMainURL, MainObject, setMainObject } } >
+        <ACContext.Provider value={ { MainObject, setMainObject, peticion } } >
             { children }
         </ACContext.Provider>
     );

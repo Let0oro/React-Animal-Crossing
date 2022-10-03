@@ -1,5 +1,4 @@
 import { BrowserRouter as Router , Routes, Route} from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { ACContextProvider } from './context/context';
 import './App.css';
 
@@ -12,11 +11,13 @@ import Bugs from './components/Pages/Bugs/Bugs.jsx';
 import Fish from './components/Pages/Fish/Fish';
 import Fossils from './components/Pages/Fossils/Fossils.jsx';
 import Items from './components/Pages/Items/Items.jsx';
-import Music from './components/Pages/Music/Music.jsx';
 import Sea from './components/Pages/Sea/Sea.jsx';
 import Songs from './components/Pages/Songs/Songs.jsx';
 import Villagers from './components/Pages/Villagers/Villagers.jsx';
 
+import Houseware from './components/Pages/Items/Houseware/Houseware.jsx';
+import Misc from './components/Pages/Items/Misc/Misc.jsx';
+import Wallmounted from './components/Pages/Items/Wallmounted/Wallmounted.jsx';
 
 
 const App = () => {
@@ -37,10 +38,13 @@ const App = () => {
                 <Route path='/fish' element={ <Fish  /> } />
                 <Route path='/fossils' element={ <Fossils  /> } />
                 <Route path='/items' element={ <Items  /> } />
-                <Route path='/music' element={ <Music  /> } />
                 <Route path='/sea' element={ <Sea  /> } />
                 <Route path='/songs' element={ <Songs  /> } />
                 <Route path='/villagers' element={ <Villagers  /> } />
+                
+                <Route path='/items/houseware' element={ <Houseware  /> } />
+                <Route path='/items/misc' element={ <Misc  /> } />
+                <Route path='/items/wallmounted' element={ <Wallmounted  /> } />
 
               </Routes>
 

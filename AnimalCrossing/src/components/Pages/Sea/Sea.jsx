@@ -6,8 +6,14 @@ import { expandCard } from '../../functions/general';
 
 const Sea = () => {
 
-  const { mainURL, MainObject } = useContext(ACContext);
-  console.log(MainObject, mainURL);
+  const { MainObject, peticion } = useContext(ACContext);
+  
+  
+  useEffect(() => {
+    
+    peticion( 'https://acnhapi.com/v1a/sea' );
+  
+  }, []);
   
   //? VARIABLES
 

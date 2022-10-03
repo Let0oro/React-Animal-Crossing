@@ -1,6 +1,6 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ACContext } from '../../context/context';
+import { ACContext} from '../../context/context';
 import './Main.css';
 
 //* Cambio de variable más rápido que UseState
@@ -12,11 +12,7 @@ let isUsedRight = false;
 //* Fin de cambio de variable
 
 const Main = () => {
-
-  //* UseContext
-  const { setMainURL, mainURL, petition } = useContext( ACContext );
-  //* Fin UseContext
-
+  
 
   //* UseState 
   const [ dialogue, setDialogue ]               = useState( '' );
@@ -218,7 +214,6 @@ const Main = () => {
       <Link to='/Fish'
       ref={ fishButton }
       className='desplegable--left'
-      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/fish' ) } 
 
       />
 
@@ -226,7 +221,6 @@ const Main = () => {
       <Link to='/Sea'
       ref={ seaButton }
       className='desplegable--left'
-      onClick={() => setMainURL( 'https://acnhapi.com/v1a/sea' )} 
 
       />
 
@@ -234,7 +228,6 @@ const Main = () => {
       <Link to='/Bugs'
       ref={ bugsButton }
       className='desplegable--left'
-      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/bugs' )} 
 
       />
 
@@ -242,7 +235,6 @@ const Main = () => {
       <Link to='/Fossils'
       ref={ fossilsButton }
       className='desplegable--left'
-      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/fossils' )} 
 
       />
 
@@ -261,7 +253,6 @@ const Main = () => {
       <Link to='/Villagers'
       ref={ villagersButton }
       className='desplegable--right'
-      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/villagers' )} 
 
       />
 
@@ -269,7 +260,6 @@ const Main = () => {
       <Link to='/Items'
       ref={ itemsButton }
       className='desplegable--right'
-      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/items' )} 
 
       />
 
@@ -277,7 +267,6 @@ const Main = () => {
       <Link to='/Songs'
       ref={ songsButton }
       className='desplegable--right'
-      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/songs' )} 
 
       />
 
@@ -285,7 +274,6 @@ const Main = () => {
       <Link to='/Art'
       ref={ artButton }
       className='desplegable--right'
-      onClick={ () => setMainURL( 'https://acnhapi.com/v1a/art' )} 
 
       />
 

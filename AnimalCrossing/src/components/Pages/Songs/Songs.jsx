@@ -5,8 +5,14 @@ import { expandCard } from '../../functions/general';
 
 const Songs = () => {
 
-  const { mainURL, MainObject } = useContext(ACContext);
-  console.log(MainObject, mainURL);
+  const { MainObject, peticion } = useContext(ACContext);
+  
+  
+  useEffect(() => {
+    
+    peticion( 'https://acnhapi.com/v1a/songs' );
+  
+  }, []);
   
   //? VARIABLES
 

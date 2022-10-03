@@ -5,9 +5,13 @@ import { useContext , useState , useEffect } from 'react';
 
 const Fish = ( ) => {
   
-  const { MainObject, mainURL } = useContext(ACContext);
-
-  console.log(MainObject, mainURL);
+  const { MainObject, peticion } = useContext(ACContext);
+  
+  useEffect(() => {
+    
+    peticion( 'https://acnhapi.com/v1a/fish' );
+    
+  }, []);
 
   //? VARIABLES
 

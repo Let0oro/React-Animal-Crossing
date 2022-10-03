@@ -8,8 +8,13 @@ import './Fossils.css';
 
 const Fossils = () => {
 
-  const { mainURL, MainObject } = useContext(ACContext);
-  console.log(MainObject, mainURL);
+  const { MainObject, peticion } = useContext(ACContext);
+  
+  useEffect(() => {
+    
+    peticion( 'https://acnhapi.com/v1a/fossils' );
+  
+  }, []);
 
 
   const searchPanel  = document.querySelector('.search-panel__input'); 
