@@ -1,16 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { ACContext } from '../../context/context';
-import { useContext } from 'react';
-
-
-
-// Cuando esté el main activado, icon no aparece
 
 const Header = () => {
-
-  const { MainObject, setMainURL } = useContext(ACContext);
 
   return (
     <nav>
